@@ -1,21 +1,22 @@
+
 import traceback
 from util import db_connection
 import pandas as pd
 import configparser
 
 
-config = configparser.ConfigParser()
-config.read(".properties")
-config.get("DbConnection", "Type")
+parser = configparser.ConfigParser()
+parser.read(".properties")
+
 
 db_sectionName = "DbConnection"
 stg_conn = db_connection.Db_Connection(
-    config.get(db_sectionName, "Type"),
-    config.get(db_sectionName, "Host"),
-    config.get(db_sectionName, "Port"),
-    config.get(db_sectionName, "User"),
-    config.get(db_sectionName, "Password"),
-    config.get(db_sectionName, "Stg"),
+    parser.get(db_sectionName, "Type"),
+    parser.get(db_sectionName, "Host"),
+    parser.get(db_sectionName, "Port"),
+    parser.get(db_sectionName, "User"),
+    parser.get(db_sectionName, "Password"),
+    parser.get(db_sectionName, "Stg"),
 )
 cvsSectionName = "CSVS"
 
@@ -39,7 +40,7 @@ def ext_channels():
         }
 
         
-        read_csv = pd.read_csv(config.get(cvsSectionName, "CHANNELS"))
+        read_csv = pd.read_csv(parser.get(cvsSectionName, "CHANNELS"))
 
         
         if not read_csv.empty:
