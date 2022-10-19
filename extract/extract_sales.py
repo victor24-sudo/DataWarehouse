@@ -63,7 +63,7 @@ def ext_sales():
                 colummns_sales_dict["quantity_sold"].append(q_s)
                 colummns_sales_dict["amount_sold"].append(am)
         if colummns_sales_dict["prod_id"]:
-            conn.connect().execute("TRUNCATE TABLE channels")
+            conn.connect().execute("TRUNCATE TABLE sales")
             # Creating Dataframe
             # Persisting into db
             df_channels = pd.DataFrame(colummns_sales_dict)

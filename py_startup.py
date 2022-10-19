@@ -1,12 +1,15 @@
 import traceback
 from extract.extract_channel import ext_channels
 from extract.extract_sales import ext_sales
+from extract.extract_countries import ext_countries
 
 
 
 try:
     # ext_channels()
-    ext_sales()
+    # ext_sales()
+    ext_countries()
+
 
 except:
     traceback.print_exc()
