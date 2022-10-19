@@ -11,12 +11,12 @@ from extract.extract_times import ext_times
 
 try:
     ext_channels()
-    # ext_sales()
-    # ext_countries()
-    # ext_customers()
-    # ext_products()
-    # ext_promotions()
-    # ext_times()
+    ext_sales()
+    ext_countries()
+    ext_customers()
+    ext_products()
+    ext_promotions()
+    ext_times()
 
 
 except:
