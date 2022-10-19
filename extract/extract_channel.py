@@ -40,15 +40,15 @@ def ext_channels():
         }
 
         
-        read_csv = pd.read_csv(parser.get(cvsSectionName, "CHANNELS"))
+        read_channelcsv = pd.read_csv(parser.get(cvsSectionName, "CHANNELS"))
 
         
-        if not read_csv.empty:
+        if not read_channelcsv.empty:
             for id, desc, ch_class, ch_class_id in zip(
-                read_csv["CHANNEL_ID"],
-                read_csv["CHANNEL_DESC"],
-                read_csv["CHANNEL_CLASS"],
-                read_csv["CHANNEL_CLASS_ID"],
+                read_channelcsv["CHANNEL_ID"],
+                read_channelcsv["CHANNEL_DESC"],
+                read_channelcsv["CHANNEL_CLASS"],
+                read_channelcsv["CHANNEL_CLASS_ID"],
             ):
                 colummns_dict["channel_id"].append(id)
                 colummns_dict["channel_desc"].append(desc)
