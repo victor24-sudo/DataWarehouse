@@ -20,7 +20,7 @@ stg_conn = db_connection.Db_Connection(
 )
 cvsSectionName = "CSVS"
 
-def trans_channels():
+def trans_channels(codigo):
     try:
 
         conn = stg_conn.start()
@@ -34,13 +34,13 @@ def trans_channels():
             "channel_desc": [],
             "channel_class": [],
             "channel_class_id": [],
-            "Codigo_etl": []
+            "codigo_etl": []
         }
 
         ext_channel = pd.read_sql("SELECT CHANNEL_ID,CHANNEL_DESC, CHANNEL_CLASS, CHANNEL_CLASS_ID FROM channels", conn)
 
         if not ext_channel.empty:
-            for id, desc, ch_class, ch_class_id, Codigo_etl in zip(
+            for id, desc, ch_class, ch_class_id in zip(
                     ext_channel["CHANNEL_ID"],
                     ext_channel["CHANNEL_DESC"],
                     ext_channel["CHANNEL_CLASS"],
@@ -50,7 +50,8 @@ def trans_channels():
                 colummns_dict["channel_desc"].append(desc)
                 colummns_dict["channel_class"].append(ch_class)
                 colummns_dict["channel_class_id"].append(ch_class_id)
-                colummns_dict["Codigo_etl"].append(Codigo_etl)
+                colummns_dict["codigo_etl"].append(codigo)
+
         if colummns_dict["channel_id"]:
             # Creating Dataframe
             # Persisting into db
